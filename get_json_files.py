@@ -14,10 +14,12 @@ file_activites = json.loads(activites_json_raw.text)
 
 
 for installation in file_installations['data']:
-    print(installation)
-
+    obj_temp = Installation(installation)
+    obj_temp.ajoutdb()
+    
 for equipement in file_equipements['data']:
-    print(equipement)
+    obj_temp = Equipement(equipement)
+    obj_temp.ajoutdb()
     
 for activite in file_activites['data']:
-    print(activite)
+    obj_temp = ActiviteEquipement(activite)
