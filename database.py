@@ -16,9 +16,9 @@ def creation_table_database():
                                             CodePostal VARCHAR(5),
                                             Commune VARCHAR(100),
                                             Rue VARCHAR(255),
-                                            Train BOOL,
-                                            Bus BOOL,
-                                            Tram BOOL
+                                            Train VARCHAR(3),
+                                            Bus VARCHAR(3),
+                                            Tram VARCHAR(3)
                                             )''')
     c.execute('''CREATE TABLE Equipement (
                                             NumeroEquipement INT PRIMARY KEY NOT NULL,
