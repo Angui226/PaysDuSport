@@ -11,3 +11,6 @@ class Installation:
         self.train=json_obj['InsTransportTrain']
         self.bus=json_obj['InsTransportBus']
         self.tram=json_obj['InsTransportTram']
+        
+    def ajoutdb_installation():
+        
