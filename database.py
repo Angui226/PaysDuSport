@@ -4,9 +4,11 @@ def creation_table_database():
     conn = sqlite3.connect('database.db') #creation a notre base de donnee
     c = conn.cursor()
     #supprimer les tables si elles existent
+    c.execute('''SELECT * FROM INSTALLATION''')
     c.execute('''DROP TABLE IF EXISTS Installation''')
     c.execute('''DROP TABLE IF EXISTS Equipement''')
     c.execute('''DROP TABLE IF EXISTS Activite''')
+
     
     #creation des tables
     c.execute('''CREATE TABLE Installation (
@@ -38,5 +40,6 @@ def creation_table_database():
                                                 FOREIGN KEY(NumeroEquipement)
                                                 REFERENCES Equipement(NumeroEquipement)
                                             )''')
+                                                                        
     conn.commit()
     conn.close()

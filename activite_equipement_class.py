@@ -4,8 +4,7 @@ class ActiviteEquipement:
         self.libelle_activite=json_obj['ActLib']
         self.libelle_niveau=json_obj['ActNivLib']
         
-    def ajoutdb_ActiviteEquipement(self):
-        conn = sqlite3.connect('database.db')
-        c = conn.cursor()
-        conn.commit()
-        conn.close()
+    def ajoutdb_ActiviteEquipement(self,c):
+        
+        insertQuery = "INSERT INTO Activite(NumeroEquipement,LibelleActivite,LibelleNiveau) VALUES (?,?,?)"
+        c.execute(insertQuery, (self.equipement_id, self.libelle_activite,self.libelle_niveau))

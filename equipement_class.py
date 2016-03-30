@@ -5,9 +5,7 @@ class Equipement:
         self.ins_numero_install = json_obj['InsNumeroInstall']
         self.equipement_id = json_obj['EquipementId']
     
-    def ajoutdb_Equipement(self):
-        conn = sqlite3.connect('database.db')
-        c = conn.cursor()
-        c.execute("INSERT INTO Equipement VALUES ("+self.equipement_id+","+self.ins_numero_install+",'"+self.nature_libelle+"','"+self.ins_nom+"')")
-        conn.commit()
-        conn.close()
+    def ajoutdb_Equipement(self,c):
+
+        insertQuery = "INSERT INTO Equipement(NumeroEquipement,NumeroInstallation,NatureLibelle,InsNom) VALUES (?,?,?,?)"
+        c.execute(insertQuery, (self.equipement_id, self.ins_numero_install,self.nature_libelle,self.ins_nom))

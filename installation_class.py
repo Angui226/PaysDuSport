@@ -12,10 +12,22 @@ class Installation:
         self.bus=json_obj['InsTransportBus']
         self.tram=json_obj['InsTransportTram']
         
-    def ajoutdb_Installation(self):
-        conn = sqlite3.connect('database.db')
-        c = conn.cursor()
-        c.execute("INSERT INTO Installation VALUES ("+self.numero_install+",'"+self.latitude+"','"+self.longitude+"','"+self.cp+"','"+self.comune+"','"+self.rue+"',"+self.train+","+self.bus+","+self.tram+")")
-        conn.commit()
-        conn.close()
+    def ajoutdb_Installation(self,c):
+
+        # print(self.numero_install)
+        # print(str(self.latitude))
+        # print(str(self.longitude))
+        # print(self.cp)
+        # print(self.commune)
+        # print(self.rue)
+        # print(self.train)
+        # print(self.bus)
+        # print(self.tram)
+        # print('==========')
+        if(self.rue is None):
+            self.rue = ""
+
+        insertQuery = "INSERT INTO Installation(NumeroInstall,Latitude,Longitude,CodePostal,Commune,Rue,Train,Bus,Tram) VALUES (?,?,?,?,?,?,?,?,?)"
+        c.execute(insertQuery, (self.numero_install, str(self.latitude),str(self.longitude),self.cp,self.commune,self.rue,self.train,self.bus,self.tram))
+
             
