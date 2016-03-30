@@ -16,11 +16,12 @@ def recuperation_json():
     
     for installation in file_installations['data']:
         obj_temp = Installation(installation)
-        obj_temp.ajoutdb()
+        obj_temp.ajoutdb_Installation()
         
     for equipement in file_equipements['data']:
         obj_temp = Equipement(equipement)
-        obj_temp.ajoutdb()
+        obj_temp.ajoutdb_Equipement()
         
     for activite in file_activites['data']:
         obj_temp = ActiviteEquipement(activite)
+        obj_temp.ajoutdb_ActiviteEquipement()
