@@ -5,6 +5,5 @@ class ActiviteEquipement:
         self.libelle_niveau=json_obj['ActNivLib']
         
     def ajoutdb_ActiviteEquipement(self,c):
-        
         insertQuery = "INSERT INTO Activite(NumeroEquipement,LibelleActivite,LibelleNiveau) VALUES (?,?,?)"
         c.execute(insertQuery, (self.equipement_id, self.libelle_activite,self.libelle_niveau))

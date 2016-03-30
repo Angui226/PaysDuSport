@@ -6,6 +6,5 @@ class Equipement:
         self.equipement_id = json_obj['EquipementId']
     
     def ajoutdb_Equipement(self,c):
-
         insertQuery = "INSERT INTO Equipement(NumeroEquipement,NumeroInstallation,NatureLibelle,InsNom) VALUES (?,?,?,?)"
         c.execute(insertQuery, (self.equipement_id, self.ins_numero_install,self.nature_libelle,self.ins_nom))

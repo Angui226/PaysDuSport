@@ -13,18 +13,7 @@ class Installation:
         self.tram=json_obj['InsTransportTram']
         
     def ajoutdb_Installation(self,c):
-
-        # print(self.numero_install)
-        # print(str(self.latitude))
-        # print(str(self.longitude))
-        # print(self.cp)
-        # print(self.commune)
-        # print(self.rue)
-        # print(self.train)
-        # print(self.bus)
-        # print(self.tram)
-        # print('==========')
-        if(self.rue is None):
+        if(self.rue is None): #permet de catcher le cas ou il n y a pas de rue entree
             self.rue = ""
 
         insertQuery = "INSERT INTO Installation(NumeroInstall,Latitude,Longitude,CodePostal,Commune,Rue,Train,Bus,Tram) VALUES (?,?,?,?,?,?,?,?,?)"
