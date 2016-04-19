@@ -1,6 +1,11 @@
 import sqlite3
 
 def creation_table_database():
+    """
+    Create the database if it doesn't exists, connect to it if it does.
+    Drop table to avoid error
+    create table with the correct variables
+    """
     conn = sqlite3.connect('database.db') #creation a notre base de donnee
     c = conn.cursor()
     #supprimer les tables si elles existent
@@ -8,7 +13,7 @@ def creation_table_database():
     c.execute('''DROP TABLE IF EXISTS Equipement''')
     c.execute('''DROP TABLE IF EXISTS Activite''')
 
-    
+
     #creation des tables
     c.execute('''CREATE TABLE Installation (
                                             NumeroInstall INT PRIMARY KEY NOT NULL,
@@ -30,7 +35,7 @@ def creation_table_database():
                                                 FOREIGN KEY(NumeroInstallation)
                                                 REFERENCES Installation(NumeroInstall)
                                             )''')
-                                            
+
     c.execute('''CREATE TABLE Activite (
                                             NumeroEquipement INT ,
                                             LibelleActivite VARCHAR(100),
@@ -39,15 +44,21 @@ def creation_table_database():
                                                 FOREIGN KEY(NumeroEquipement)
                                                 REFERENCES Equipement(NumeroEquipement)
                                             )''')
-                                                                        
+
     conn.commit()
     conn.close()
-    
-    
-    
-def select_install_ville( ville ):
+
+
+
+def select_install_town( town ):
+    """
+    select all equipement of a given town
+    """
+    print(ville)
     conn = sqlite3.connect('database.db') #creation a notre base de donnee
     c = conn.cursor()
-    selectQuery = "select * from Installation where Commune = (?)"
+    selectQuery = "select * from Installation where Commune ='"+str(ville)+"'"
+
     c.execute(selectQuery, (ville))
+    print(selectQuery)
     conn.close()
