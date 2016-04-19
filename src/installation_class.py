@@ -17,5 +17,5 @@ class Installation:
         if(self.rue is None): #permet de catcher le cas ou il n y a pas de rue entree
             self.rue = ""
 
-        insertQuery = "INSERT INTO Installation(NumeroInstall,Nom,Latitude,Longitude,CodePostal,Commune,Rue,Train,Bus,Tram) VALUES (?,?,?,?,?,?,?,?,?)"
+        insertQuery = "INSERT INTO Installation(NumeroInstall,Nom,Latitude,Longitude,CodePostal,Commune,Rue,Train,Bus,Tram) VALUES (?,?,?,?,?,?,?,?,?,?)"
         c.execute(insertQuery, (self.numero_install,self.nom,str(self.latitude),str(self.longitude),self.cp,self.commune,self.rue,self.train,self.bus,self.tram))
