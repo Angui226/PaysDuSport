@@ -42,3 +42,12 @@ def creation_table_database():
                                                                         
     conn.commit()
     conn.close()
+    
+    
+    
+def select_install_ville( ville ):
+    conn = sqlite3.connect('database.db') #creation a notre base de donnee
+    c = conn.cursor()
+    selectQuery = "select * from Installation where Commune = (?)"
+    c.execute(selectQuery, (ville))
+    conn.close()

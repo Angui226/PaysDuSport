@@ -18,5 +18,3 @@ class Installation:
 
         insertQuery = "INSERT INTO Installation(NumeroInstall,Latitude,Longitude,CodePostal,Commune,Rue,Train,Bus,Tram) VALUES (?,?,?,?,?,?,?,?,?)"
         c.execute(insertQuery, (self.numero_install, str(self.latitude),str(self.longitude),self.cp,self.commune,self.rue,self.train,self.bus,self.tram))
-
-            

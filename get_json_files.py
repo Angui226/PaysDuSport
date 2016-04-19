@@ -1,16 +1,23 @@
-import requests
 import json
-
+import sqlite3
+from installation_class import *
+from activite_equipement_class import *
+from equipement_class import *
+from database import *
 
 def recuperation_json():
-    installations_json_raw = requests.get('http://data.paysdelaloire.fr/api/publication/23440003400026_J335/installations_table/content/?format=json')
-    equipements_json_raw = requests.get('http://data.paysdelaloire.fr/api/publication/23440003400026_J336/equipements_table/content/?format=json')
-    activites_json_raw = requests.get('http://data.paysdelaloire.fr/api/publication/23440003400026_J334/equipements_activites_table/content/?format=json')
+
+    file_installations = open("installations.json", "r").read()
+    
+    file_equipements = open("equipements.json", "r").read()
+    
+    file_activites = open("activites.json", "r").read()
+
     
     #prend en charge d un fichier json
-    file_installations = json.loads(installations_json_raw.text)
-    file_equipements = json.loads(equipements_json_raw.text)
-    file_activites = json.loads(activites_json_raw.text)
+    file_installations = json.loads(file_installations)
+    file_equipements = json.loads(file_equipements)
+    file_activites = json.loads(file_activites)
     
     #ouverture de la connecxion a la bd
     conn = sqlite3.connect('database.db')
