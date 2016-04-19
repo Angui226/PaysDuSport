@@ -25,5 +25,5 @@ def do_home():
 
     result = select_install_town(town, sport)
     return template('home', datas = result )
-
-run(host="localhost", port=8080)
+    
+run(host="172.21.67.98", port=8080)
