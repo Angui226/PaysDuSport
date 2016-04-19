@@ -17,6 +17,7 @@ def creation_table_database():
     #creation des tables
     c.execute('''CREATE TABLE Installation (
                                             NumeroInstall INT PRIMARY KEY NOT NULL,
+                                            Nom VARCHAR(255),
                                             Latitude VARCHAR(100),
                                             Longitude VARCHAR(100),
                                             CodePostal VARCHAR(5),
@@ -50,15 +51,15 @@ def creation_table_database():
 
 
 
-def select_install_town( town ):
+def select_install_town( town, sport ):
     """
     select all equipement of a given town
     """
     print(ville)
     conn = sqlite3.connect('database.db') #creation a notre base de donnee
     c = conn.cursor()
-    selectQuery = "select * from Installation where Commune ='"+str(ville)+"'"
+    
+    selectQuery = "SELECT i.Nom, a.LibelleActivite FROM INSTALLATION i JOIN EQUIPEMENT e ON i.NumeroInstall = e.NumeroEquipement JOIN ACTIVITE a ON e.NumeroEquipement = a.NumeroEquipement WHERE i.ville = (?) AND a.nom LIKE %(?)%"
 
-    c.execute(selectQuery, (ville))
-    print(selectQuery)
+    c.execute( selectQuery, (town, sport) )
     conn.close()
