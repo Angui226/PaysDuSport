@@ -24,7 +24,6 @@ def do_home():
     sport = request.forms.get('sport')
 
     result = select_install_town(town, sport)
-    print(result)
     return template('home', datas = result )
 
 run(host="localhost", port=8080)

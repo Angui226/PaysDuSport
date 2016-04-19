@@ -61,5 +61,11 @@ def select_install_town( town, sport ):
     selectQuery = "SELECT i.Nom, a.LibelleActivite FROM INSTALLATION i JOIN EQUIPEMENT e ON i.NumeroInstall = e.NumeroEquipement JOIN ACTIVITE a ON e.NumeroEquipement = a.NumeroEquipement WHERE i.Commune = (?) AND a.LibelleActivite LIKE (?)"
 
     result = c.execute( selectQuery, (town, sport) )
+    
+    infos = []
+    for i in result:
+        for j in i:
+            infos.append(j)
     conn.close()
-    return result
+    
+    return infos
