@@ -1,4 +1,4 @@
-%if len(datas) > 0:
+%if datas.rowcount > 0:
     <table id="info_equiepemnt_ville">
         <thead>
             <tr>

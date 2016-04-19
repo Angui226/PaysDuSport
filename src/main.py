@@ -6,24 +6,25 @@ from database import *
 creation_table_database()
 getJsonAndCreate()
 
-from bottle import get, post, request, run
+from bottle import get, post, request, run, template
 
-@get('/home') # or @route('/login')
+@get('/') # or @route('/login')
 def home():
     return '''
-        <form action="/home" method="post">
+        <form action="/" method="post">
             Ville: <input name="ville" type="text" />
             Sport: <input name="sport" type="text" />
             <input value="search" type="submit" />
         </form>
         '''
 
-@post('/home') # or @route('/login', method='POST')
+@post('/') # or @route('/', method='POST')
 def do_home():
-    ville = request.forms.get('ville')
+    town = request.forms.get('ville')
     sport = request.forms.get('sport')
 
-    result = select_install_ville(ville)
-    return "ok"
+    result = select_install_town(town, sport)
+    print(result)
+    return template('home', datas = result )
 
 run(host="localhost", port=8080)

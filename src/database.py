@@ -6,7 +6,7 @@ def creation_table_database():
     Drop table to avoid error
     create table with the correct variables
     """
-    conn = sqlite3.connect('database.db') #creation a notre base de donnee
+    conn = sqlite3.connect('../db/database.db') #creation a notre base de donnee
     c = conn.cursor()
     #supprimer les tables si elles existent
     c.execute('''DROP TABLE IF EXISTS Installation''')
@@ -55,11 +55,11 @@ def select_install_town( town, sport ):
     """
     select all equipement of a given town
     """
-    print(ville)
     conn = sqlite3.connect('database.db') #creation a notre base de donnee
     c = conn.cursor()
     
-    selectQuery = "SELECT i.Nom, a.LibelleActivite FROM INSTALLATION i JOIN EQUIPEMENT e ON i.NumeroInstall = e.NumeroEquipement JOIN ACTIVITE a ON e.NumeroEquipement = a.NumeroEquipement WHERE i.ville = (?) AND a.nom LIKE %(?)%"
+    selectQuery = "SELECT i.Nom, a.LibelleActivite FROM INSTALLATION i JOIN EQUIPEMENT e ON i.NumeroInstall = e.NumeroEquipement JOIN ACTIVITE a ON e.NumeroEquipement = a.NumeroEquipement WHERE i.Commune = (?) AND a.LibelleActivite LIKE (?)"
 
-    c.execute( selectQuery, (town, sport) )
+    result = c.execute( selectQuery, (town, sport) )
     conn.close()
+    return result
