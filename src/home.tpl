@@ -10,8 +10,8 @@
         <tbody>
         % for item in datas:
             <tr>
-                <td>{{item.nom}}</td>
-                <td>{{item.LibelleActivite}}</td>
+                <td>{{item[0]}}</td>
+                <td>{{item[1]}}</td>
             </tr>
         %end
         </tbdoy>
@@ -25,3 +25,4 @@
 %else:
     <h1>Aucunes donnees</h1>
 %end
+ 

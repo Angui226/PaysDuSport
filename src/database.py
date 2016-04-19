@@ -55,17 +55,15 @@ def select_install_town( town, sport ):
     """
     select all equipement of a given town
     """
-    conn = sqlite3.connect('database.db') #creation a notre base de donnee
+    conn = sqlite3.connect('../db/database.db') #creation a notre base de donnee
     c = conn.cursor()
     
-    selectQuery = "SELECT i.Nom, a.LibelleActivite FROM INSTALLATION i JOIN EQUIPEMENT e ON i.NumeroInstall = e.NumeroEquipement JOIN ACTIVITE a ON e.NumeroEquipement = a.NumeroEquipement WHERE i.Commune = (?) AND a.LibelleActivite LIKE (?)"
+    selectQuery = "SELECT DISTINCT i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE i.Commune = (?) AND a.LibelleActivite = (?) AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
 
-    result = c.execute( selectQuery, (town, sport) )
+
+    c.execute( selectQuery, (town, sport) )
+    result = c.fetchall();
     
-    infos = []
-    for i in result:
-        for j in i:
-            infos.append(j)
     conn.close()
-    
-    return infos
+    print(result)
+    return result
