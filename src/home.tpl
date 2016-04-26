@@ -13,15 +13,15 @@ border : 1px;
 </head>
 <body>
         <form action="/" method="post">
-          Ville: <select name="ville">
-            <option value="vide">Selectionner un sport ou laisser vide pour tout avoir</option>
+          Ville: <select name="town">
+            <option value="empty">Selectionner un sport ou laisser vide pour tout avoir</option>
             % for option in list_town:
                  <option value={{option[0]}}>{{option[0]}}</option>
             %end
 
           </select>
             Sport: <select name="sport">
-              <option value="vide">Selectionner une ville ou laisser vide pour tout avoir</option>
+              <option value="empty">Selectionner une ville ou laisser vide pour tout avoir</option>
               % for option in list_activities:
                    <option value={{option[0]}}>{{option[0]}}</option>
               %end

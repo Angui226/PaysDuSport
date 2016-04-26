@@ -19,7 +19,21 @@ def do_home():
     town = request.forms.get('ville')
     sport = request.forms.get('sport')
 
-    result = select_install_town(town, sport)
+    print (town)
+    print (sport)
+
+    if ((town != 'empty') && (sport !='empty')):
+        result = select_install_town(town, sport)
+
+    if ((town != 'empty') && (sport =='empty')):
+        result = select_install_town_empty_sport(town, sport)
+
+    if ((town == 'empty') && (sport !='empty')):
+        result = select_install_town_empty_town(town, sport)
+
+    if ((town == 'empty') && (sport =='empty')):
+        result = select_install_town(town, sport)
+
     list_activities = get_list_activites()
     list_town = get_list_town()
     return template('home_requested', datas = result, list_activities = list_activities, list_town = list_town)
