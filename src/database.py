@@ -57,13 +57,45 @@ def select_install_town( town, sport ):
     """
     conn = sqlite3.connect('../db/database.db') #creation a notre base de donnee
     c = conn.cursor()
-    
+
     selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE i.Commune LIKE '%"+town+"%' AND a.LibelleActivite LIKE '%"+sport+"%' AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
 
 
     c.execute( selectQuery )
     result = c.fetchall();
-    
+
     conn.close()
-    print(result)
+    return result
+
+def get_list_activites():
+    """
+    select all activities
+    """
+    conn = sqlite3.connect('../db/database.db') #creation a notre base de donnee
+    c = conn.cursor()
+
+    selectQuery = "SELECT DISTINCT a.LibelleActivite FROM ACTIVITE a ORDER BY a.LibelleActivite asc "
+
+
+    c.execute( selectQuery )
+    result = c.fetchall();
+
+    conn.close()
+    return result
+
+
+def get_list_town():
+    """
+    select all town
+    """
+    conn = sqlite3.connect('../db/database.db') #creation a notre base de donnee
+    c = conn.cursor()
+
+    selectQuery = "SELECT DISTINCT i.Commune FROM INSTALLATION i ORDER BY i.Commune asc "
+
+
+    c.execute( selectQuery )
+    result = c.fetchall();
+
+    conn.close()
     return result

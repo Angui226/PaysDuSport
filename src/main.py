@@ -10,13 +10,9 @@ from bottle import get, post, request, run, template
 
 @get('/') # or @route('/login')
 def home():
-    return '''
-        <form action="/" method="post">
-            Ville: <input name="ville" type="text" />
-            Sport: <input name="sport" type="text" />
-            <input value="search" type="submit" />
-        </form>
-        '''
+    list_activities = get_list_activites()
+    list_town = get_list_town()
+    return template('home', list_activities = list_activities, list_town = list_town )
 
 @post('/') # or @route('/', method='POST')
 def do_home():
@@ -24,6 +20,8 @@ def do_home():
     sport = request.forms.get('sport')
 
     result = select_install_town(town, sport)
-    return template('home', datas = result )
-    
-run(host="172.21.67.98", port=8080)
+    list_activities = get_list_activites()
+    list_town = get_list_town()
+    return template('home_requested', datas = result, list_activities = list_activities, list_town = list_town)
+
+run(host="localhost", port=8080)
