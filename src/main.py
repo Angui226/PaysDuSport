@@ -4,6 +4,7 @@
 import sqlite3
 import time
 import re
+import urllib
 from get_json_files import *
 from database import *
 
@@ -21,9 +22,18 @@ def home():
 
 @post('/') # or @route('/', method='POST')
 def do_home():
-    town = request.forms.get('town')
-    sport = request.forms.get('sport')
+    r = urllib.parse.unquote(request.body.read().decode())
+    pattern = "sport="
+    sport_i = r.index(pattern)
+    sport = r[sport_i + len(pattern):].replace("+", " ")
+    pattern2 = "&"
+    pattern3 = "town="
+    town_i = r.index(pattern2)
+    town = r[len(pattern3) : town_i].replace("+", " ")
 
+    print(r)
+    print (sport)
+    print (town)
     #SQL injection handler
 #    if not re.search("^[a-z0-9]+$", town):
 #        raise InjectionSQL
@@ -48,6 +58,8 @@ def do_home():
     return template('home_requested', datas = result, list_activities = list_activities, list_town = list_town)
 
 
+
+
 #Detail page
 @get('/detail/<id_installation>')
 def detail(id_installation):
@@ -55,6 +67,8 @@ def detail(id_installation):
 #        raise InjectionSQL
 
     specific_installation = get_specific_installation( id_installation )
-    
+    #faire requete avec tous les equipements ayant cette installation
+
+    return template( 'installation_specifique',specific_installation  = specific_installation )
 
 run(host="localhost", port=8080)

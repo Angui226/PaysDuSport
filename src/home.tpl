@@ -24,7 +24,7 @@ border : 1px;
             Sport: <select name="sport">
               <option value="empty">Selectionner une ville ou laisser vide pour tout avoir</option>
               % for option in list_activities:
-                   <option value={{option[0]}}>{{option[0]}}</option>
+                   <option value="{{option[0]}}">{{option[0]}}</option>
               %end
 
             </select>

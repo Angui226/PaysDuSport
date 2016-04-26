@@ -60,7 +60,7 @@ def select_install_town( town, sport ):
     conn = sqlite3.connect('../db/database.db') #creation a notre base de donnee
     c = conn.cursor()
 
-    selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE i.Commune LIKE '%"+town+"%' AND a.LibelleActivite LIKE '%"+sport+"%' AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
+    selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE i.Commune = '"+town+"' AND a.LibelleActivite = '"+sport+"' AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
 
 
     c.execute( selectQuery )
@@ -76,7 +76,7 @@ def select_install_town_empty_town(sport):
     conn = sqlite3.connect('../db/database.db') #connect to database
     c = conn.cursor()
 
-    selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE a.LibelleActivite LIKE '%"+sport+"%' AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
+    selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE a.LibelleActivite = '"+sport+"' AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
 
 
     c.execute( selectQuery )
@@ -92,9 +92,9 @@ def select_install_town_empty_sport(town):
     conn = sqlite3.connect('../db/database.db') #connect to database
     c = conn.cursor()
 
-    selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE i.Commune LIKE '%"+town+"%' AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
+    selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE i.Commune = '"+town+"' AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
 
-
+    print (selectQuery)
     c.execute( selectQuery )
     result = c.fetchall();
 
@@ -154,4 +154,3 @@ def get_specific_installation(id_activity):
 
     conn.close()
     return result
-    
