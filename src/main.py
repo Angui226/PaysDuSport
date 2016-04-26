@@ -31,9 +31,6 @@ def do_home():
     town_i = r.index(pattern2)
     town = r[len(pattern3) : town_i].replace("+", " ")
 
-    print(r)
-    print (sport)
-    print (town)
     #SQL injection handler
 #    if not re.search("^[a-z0-9]+$", town):
 #        raise InjectionSQL
@@ -49,8 +46,8 @@ def do_home():
 
     elif (town == 'empty' and sport !='empty'):
         result = select_install_town_empty_town(sport)
-    #else:
-        #return "erreur"
+    else:
+        result = select_install_town_empty_all()
 
 
     list_activities = get_list_activites()

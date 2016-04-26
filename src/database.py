@@ -101,6 +101,22 @@ def select_install_town_empty_sport(town):
     conn.close()
     return result
 
+def select_install_town_empty_all():
+    """
+    select all equipement of a given town
+    """
+    conn = sqlite3.connect('../db/database.db') #connect to database
+    c = conn.cursor()
+
+    selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
+
+    print (selectQuery)
+    c.execute( selectQuery )
+    result = c.fetchall();
+
+    conn.close()
+    return result
+
 
 
 def get_list_activites():
