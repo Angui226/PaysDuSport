@@ -34,10 +34,10 @@ border : 1px;
     <table id="info_equipement_ville" >
         <thead>
             <tr>
-                <td>Adresse</td>
-                <td>Ville</td>
-                <td>Nom complexe</td>
-                <td>Equipement</td>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Nom complexe</th>
+                <th>Equipement</th>
             </tr>
         </thead>
 
@@ -54,8 +54,10 @@ border : 1px;
 
         <tfoot>
             <tr>
-                <td>Nom complexe</td>
-                <td>Equipement</td>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Nom complexe</th>
+                <th>Equipement</th>
             </tr>
         </tfoot>
 %else:

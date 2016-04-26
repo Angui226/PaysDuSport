@@ -73,7 +73,7 @@ def select_install_town_empty_town(sport):
     """
     select all cities where a sport is practiced
     """
-    conn = sqlite3.connect('../db/database.db') #creation a notre base de donnee
+    conn = sqlite3.connect('../db/database.db') #connect to database
     c = conn.cursor()
 
     selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE a.LibelleActivite LIKE '%"+sport+"%' AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
@@ -89,7 +89,7 @@ def select_install_town_empty_sport(town):
     """
     select all equipement of a given town
     """
-    conn = sqlite3.connect('../db/database.db') #creation a notre base de donnee
+    conn = sqlite3.connect('../db/database.db') #connect to database
     c = conn.cursor()
 
     selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE i.Commune LIKE '%"+town+"%' AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
@@ -107,7 +107,7 @@ def get_list_activites():
     """
     select all activities
     """
-    conn = sqlite3.connect('../db/database.db') #creation a notre base de donnee
+    conn = sqlite3.connect('../db/database.db') #connect to database
     c = conn.cursor()
 
     selectQuery = "SELECT DISTINCT a.LibelleActivite FROM ACTIVITE a ORDER BY a.LibelleActivite asc "
@@ -124,7 +124,7 @@ def get_list_town():
     """
     select all town
     """
-    conn = sqlite3.connect('../db/database.db') #creation a notre base de donnee
+    conn = sqlite3.connect('../db/database.db') #connect to database
     c = conn.cursor()
 
     selectQuery = "SELECT DISTINCT i.Commune FROM INSTALLATION i ORDER BY i.Commune asc "
@@ -135,3 +135,23 @@ def get_list_town():
 
     conn.close()
     return result
+
+
+
+#get specific installation
+def get_specific_installation(id_activity):
+    """
+    return specific installation
+    """
+    conn = sqlite3.connect('../db/database.db') #connect to database
+    c = conn.cursor()
+
+    selectQuery = "SELECT * FROM INSTALLATION i WHERE NumeroInstall ="+id_activity
+
+
+    c.execute( selectQuery )
+    result = c.fetchall();
+
+    conn.close()
+    return result
+    

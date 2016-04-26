@@ -12,7 +12,8 @@ getJsonAndCreate()
 
 from bottle import get, post, request, run, template
 
-@get('/') # or @route('/login')
+#Home_page
+@get('/') # or @route('/')
 def home():
     list_activities = get_list_activites()
     list_town = get_list_town()
@@ -22,7 +23,6 @@ def home():
 def do_home():
     town = request.forms.get('town')
     sport = request.forms.get('sport')
-    #sport = unicode (sport, "utf-8")
 
     #SQL injection handler
 #    if not re.search("^[a-z0-9]+$", town):
@@ -30,27 +30,31 @@ def do_home():
 #    if not re.search("^[a-z0-9]+$", sport):
 #        raise InjectionSQL
 
-    print (town)
-
-    print (sport)
 
     if (town != 'empty' and sport !='empty'):
-        print ("1")
         result = select_install_town(town, sport)
 
     elif (town != 'empty' and sport =='empty'):
-        print ("2")
         result = select_install_town_empty_sport(town)
 
     elif (town == 'empty' and sport !='empty'):
-        print ("3")
         result = select_install_town_empty_town(sport)
-
-    #if (town == 'empty'and sport =='empty'):
+    #else:
+        #return "erreur"
 
 
     list_activities = get_list_activites()
     list_town = get_list_town()
     return template('home_requested', datas = result, list_activities = list_activities, list_town = list_town)
+
+
+#Detail page
+@get('/detail/<id_installation>')
+def detail(id_installation):
+#    if not re.search("^[a-z0-9]+$", id_installation):
+#        raise InjectionSQL
+
+    specific_installation = get_specific_installation( id_installation )
+    
 
 run(host="localhost", port=8080)

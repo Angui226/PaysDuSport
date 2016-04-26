@@ -13,7 +13,6 @@ border : 1px;
 </style>
 </head>
 <body>
-  ééééé
         <form action="/" method="post">
           Ville: <select name="town">
             <option value="empty">Selectionner un sport ou laisser vide pour tout avoir</option>
