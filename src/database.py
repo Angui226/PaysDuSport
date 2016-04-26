@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import sqlite3
 
 def creation_table_database():
@@ -53,7 +55,7 @@ def creation_table_database():
 
 def select_install_town( town, sport ):
     """
-    select all equipement of a given town
+    select all equipement with given sport of a given town
     """
     conn = sqlite3.connect('../db/database.db') #creation a notre base de donnee
     c = conn.cursor()
@@ -66,6 +68,40 @@ def select_install_town( town, sport ):
 
     conn.close()
     return result
+
+def select_install_town_empty_town(sport):
+    """
+    select all cities where a sport is practiced
+    """
+    conn = sqlite3.connect('../db/database.db') #creation a notre base de donnee
+    c = conn.cursor()
+
+    selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE a.LibelleActivite LIKE '%"+sport+"%' AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
+
+
+    c.execute( selectQuery )
+    result = c.fetchall();
+
+    conn.close()
+    return result
+
+def select_install_town_empty_sport(town):
+    """
+    select all equipement of a given town
+    """
+    conn = sqlite3.connect('../db/database.db') #creation a notre base de donnee
+    c = conn.cursor()
+
+    selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE i.Commune LIKE '%"+town+"%' AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
+
+
+    c.execute( selectQuery )
+    result = c.fetchall();
+
+    conn.close()
+    return result
+
+
 
 def get_list_activites():
     """

@@ -1,5 +1,6 @@
 <html>
 <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <style type="text/css">
 
 
@@ -16,7 +17,7 @@ border : 1px;
     Ville: <select name="town">
       <option value="empty">Selectionner un sport ou laisser vide pour tout avoir</option>
       % for option in list_town:
-           <option value={{option[0]}}>{{option[0]}}</option>
+           <option value="{{option[0]}}">{{option[0]}}</option>
       %end
 
     </select>
@@ -45,7 +46,7 @@ border : 1px;
              <tr>
                 <td>{{item[1]}}</td>
                 <td>{{item[2]}}</td>
-                <td><a href = "./{{item[0]}}">{{item[3]}}</a></td>
+                <td><a href = "./detail/{{item[0]}}">{{item[3]}}</a></td>
                 <td>{{item[4]}}</td>
             </tr>
         %end
