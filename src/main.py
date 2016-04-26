@@ -11,7 +11,12 @@ from database import *
 creation_table_database()
 getJsonAndCreate()
 
-from bottle import get, post, request, run, template
+from bottle import get, post, request, run, template, route, static_file
+
+@route('/static/<filename>', name='static')
+def server_static(filename):
+    return static_file(filename, root='static')
+
 
 #Home_page
 @get('/') # or @route('/')
