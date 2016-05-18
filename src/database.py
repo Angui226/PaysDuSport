@@ -43,6 +43,7 @@ def creation_table_database():
                                             NumeroEquipement INT ,
                                             LibelleActivite VARCHAR(100),
                                             LibelleNiveau VARCHAR(100),
+                                            Commune VARCHAR(100),
                                             CONSTRAINT fk_install_equipe
                                                 FOREIGN KEY(NumeroEquipement)
                                                 REFERENCES Equipement(NumeroEquipement)
@@ -135,6 +136,22 @@ def get_list_activites():
     conn.close()
     return result
 
+def get_list_activites_changed(town):
+    """
+    select all activities
+    """
+    conn = sqlite3.connect('../db/database.db') #connect to database
+    c = conn.cursor()
+
+    selectQuery = "SELECT DISTINCT a.LibelleActivite FROM ACTIVITE a WHERE a.Commune ='"+town+"' ORDER BY a.LibelleActivite asc "
+
+
+    c.execute( selectQuery )
+    result = c.fetchall();
+
+    conn.close()
+    return result
+
 
 def get_list_town():
     """
@@ -143,7 +160,7 @@ def get_list_town():
     conn = sqlite3.connect('../db/database.db') #connect to database
     c = conn.cursor()
 
-    selectQuery = "SELECT DISTINCT i.Commune FROM INSTALLATION i ORDER BY i.Commune asc "
+    selectQuery = "SELECT DISTINCT a.Commune FROM ACTIVITE a ORDER BY a.Commune asc "
 
 
     c.execute( selectQuery )

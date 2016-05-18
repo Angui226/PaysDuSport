@@ -5,15 +5,14 @@ import sqlite3
 import time
 import re
 import urllib
-
-
+import json
 from get_json_files import *
 from database import *
 
 creation_table_database()
 getJsonAndCreate()
 
-from bottle import get, post, request, run, template, route, static_file
+from bottle import get, post, request, run, template, route, static_file,response
 
 @route('/static/<filename>', name='static')
 def server_static(filename):
@@ -61,6 +60,18 @@ def do_home():
     list_town = get_list_town()
     return template('home_requested', datas = result, list_activities = list_activities, list_town = list_town)
 
+
+@post('/change') # or @route('/', method='POST')
+def do_changeTown():
+    r = urllib.parse.unquote(request.body.read().decode())
+    pattern = "town="
+    town_i = r.index(pattern)
+    town = r[town_i + len(pattern):].replace("+", " ")
+
+    list_activities = get_list_activites_changed(town)
+    json_response = json.dumps(list_activities)
+    response.content_type = 'application/json; charset=UTF-8 '
+    return json_response
 
 
 
