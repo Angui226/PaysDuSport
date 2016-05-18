@@ -3,9 +3,9 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
     
-    <link href="../static/specific_installation.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    
+    <link href="../static/specific_installation.css" rel="stylesheet" type="text/css">
+
     <script src="/static/jquery.js" type="text/javascript"></script>
     <script src="/static/installation_specifique.js" type="text/javascript"></script>
     <script src="https://rawgit.com/HPNeo/gmaps/master/gmaps.js"></script>
@@ -25,7 +25,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Pays du sport</a>
+            <a class="navbar-brand" href="../">Pays du sport</a>
           </div>
           
           <div id="navbar" class="navbar-collapse collapse">
@@ -41,7 +41,7 @@
       </nav>
 <!-- Fin NavBar -->
 
-<ul class="list-group" style ="width : 35%">
+<ul class="list-group info_complexe">
   <li class="list-group-item">Equipement : {{specific_installation[0][1]}}</li>
   <li class="list-group-item">Commune : {{specific_installation[0][5]}}</li>
   <li class="list-group-item">Rue : {{specific_installation[0][6]}}</li>
