@@ -9,10 +9,11 @@ class ActivityEquipement:
         self.equipement_id = obj['EquipementId']
         self.libelle_activite = obj['ActLib']
         self.libelle_niveau = obj['ActNivLib']
+        self.ville = obj['ComLib']
 
     def addDbActivityEquipement(self,c):
         """
         Insert the object given in parametre (self) to the database given (c)
         """
-        insertQuery = "INSERT INTO Activite(NumeroEquipement,LibelleActivite,LibelleNiveau) VALUES (?,?,?)"
-        c.execute(insertQuery, (self.equipement_id, self.libelle_activite,self.libelle_niveau))
+        insertQuery = "INSERT INTO Activite(NumeroEquipement,LibelleActivite,LibelleNiveau,Commune) VALUES (?,?,?,?)"
+        c.execute(insertQuery, (self.equipement_id, self.libelle_activite,self.libelle_niveau,self.ville))
