@@ -9,8 +9,8 @@ import json
 from get_json_files import *
 from database import *
 
-creation_table_database()
-getJsonAndCreate()
+#creation_table_database()
+#getJsonAndCreate()
 
 from bottle import get, post, request, run, template, route, static_file,response
 

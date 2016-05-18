@@ -1,3 +1,11 @@
+.navbar{
+    background-color : #337AB7;
+}
+
+#titre{
+   color : white;
+}
+
 .info_complexe{
     width : 35%;
     margin-left : 5%;

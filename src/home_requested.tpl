@@ -1,6 +1,8 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="/static/jquery.js"></script>
     <script src="/static/selector.js"></script>
 
@@ -34,7 +36,7 @@ border : 1px;
       <input value="Rechercher" type="submit" />
 
 %if len(datas) > 0:
-    <table id="info_equipement_ville" >
+    <table class="table" id="info_equipement_ville" >
         <thead>
             <tr>
                 <th>Adresse</th>
