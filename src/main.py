@@ -5,12 +5,7 @@ import sqlite3
 import time
 import re
 import urllib
-<<<<<<< HEAD
 import json
-=======
-
-
->>>>>>> a953407c525f0fa02c2651e503597792c0e92423
 from get_json_files import *
 from database import *
 

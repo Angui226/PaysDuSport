@@ -9,7 +9,13 @@ $(function() {
                    "town": $("#town").val(),
                },
                success: function(data) {
+                 $("#sport").empty();
+                 $("#sport").append('<option value="empty">Selectionner une ville ou laisser vide pour tout avoir</option>')
+                 $.each(data, function(i, item) {
+                 $("#sport").append('<option value="'+item+'">'+item+'</option>')
 
+
+                    })
 
                },
                error: function(resultat, statut, erreur) {
