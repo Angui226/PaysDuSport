@@ -3,6 +3,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href="../static/specific_installation.css" rel="stylesheet" type="text/css">
     <script src="/static/jquery.js"></script>
     <script src="/static/selector.js"></script>
 
@@ -12,6 +13,10 @@
 #info_equipement_ville{
 padding-left : 10px;
 border : 1px;
+}
+
+.right_nav{
+     margin-top : 8px !important;
 }
 </style>
 </head>
@@ -29,27 +34,29 @@ border : 1px;
             </button>
             <a class="navbar-brand" href="../"><span id="titre">Pays du sport</span></a>
           </div>
-          
+
           <div id="navbar" class="navbar-collapse collapse">
           <form  action="/" method="post">
-          
+
               <!-- <li class="active"><a href="#">Accueil</a></li> -->
-              
-              <span class="col-md-1 navbar-right"><input style="margin-top=10px;" class="btn btn-primary" value="Rechercher" type="submit" /></span>
-              
-              <span class="col-md-3 navbar-right">Sport: <select id="sport" class="form-control" name="sport">
+
+              <span class="col-md-1 navbar-right right_nav";""><input class="btn btn-primary" value="Rechercher" type="submit" /></span>
+
+              <span class="col-md-3 navbar-right right_nav">
+                    <table><tr><td>Sport:</td><td><select id="sport" class="form-control" name="sport">
                <option value="empty">Selectionner une ville ou laisser vide pour tout avoir</option>
                % for option in list_activities:
                     <option value="{{option[0]}}">{{option[0]}}</option>
                %end
-               </select></span>
+               </select></td></tr></table></span>
               
-              <span class="col-md-2 navbar-right">Ville: <select id="town" class="form-control" name="town">
+              <span class="col-md-3 navbar-right right_nav">
+               <table><tr><td>Ville:</td><td><select id="town" class="form-control" name="town">
                <option value="empty">Selectionner un sport ou laisser vide pour tout avoir</option>
                % for option in list_town:
                     <option value="{{option[0]}}">{{option[0]}}</option>
                %end
-               </select></span>
+               </select></td></tr></table></span>
 
             </form>
             
