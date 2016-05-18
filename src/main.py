@@ -5,7 +5,12 @@ import sqlite3
 import time
 import re
 import urllib
+<<<<<<< HEAD
 import json
+=======
+
+
+>>>>>>> a953407c525f0fa02c2651e503597792c0e92423
 from get_json_files import *
 from database import *
 
@@ -84,6 +89,6 @@ def detail(id_installation):
     specific_installation = get_specific_installation( id_installation )
     #faire requete avec tous les equipements ayant cette installation
 
-    return template( 'installation_specifique',specific_installation  = specific_installation )
+    return template( 'specific_installation',specific_installation  = specific_installation )
 
 run(host="localhost", port=8080)
