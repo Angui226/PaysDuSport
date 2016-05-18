@@ -95,7 +95,6 @@ def select_install_town_empty_sport(town):
 
     selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE i.Commune = '"+town+"' AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
 
-    print (selectQuery)
     c.execute( selectQuery )
     result = c.fetchall();
 
@@ -111,7 +110,6 @@ def select_install_town_empty_all():
 
     selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
 
-    print (selectQuery)
     c.execute( selectQuery )
     result = c.fetchall();
 

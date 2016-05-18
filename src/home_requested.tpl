@@ -13,27 +13,54 @@
 padding-left : 10px;
 border : 1px;
 }
-
-
 </style>
 </head>
 <body>
-  <form action="/" method="post">
-    Ville: <select id="town" name="town">
-      <option value="empty">Selectionner un sport ou laisser vide pour tout avoir</option>
-      % for option in list_town:
-           <option value="{{option[0]}}">{{option[0]}}</option>
-      %end
 
-    </select>
-      Sport: <select id="sport" name="sport">
-        <option value="empty">Selectionner une ville ou laisser vide pour tout avoir</option>
-        % for option in list_activities:
-             <option value="{{option[0]}}">{{option[0]}}</option>
-        %end
+<!-- NavBar -->
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../"><span id="titre">Pays du sport</span></a>
+          </div>
+          
+          <div id="navbar" class="navbar-collapse collapse">
+          <form  action="/" method="post">
+          
+              <!-- <li class="active"><a href="#">Accueil</a></li> -->
+              
+              <span class="col-md-1 navbar-right"><input style="margin-top=10px;" class="btn btn-primary" value="Rechercher" type="submit" /></span>
+              
+              <span class="col-md-3 navbar-right">Sport: <select id="sport" class="form-control" name="sport">
+               <option value="empty">Selectionner une ville ou laisser vide pour tout avoir</option>
+               % for option in list_activities:
+                    <option value="{{option[0]}}">{{option[0]}}</option>
+               %end
+               </select></span>
+              
+              <span class="col-md-2 navbar-right">Ville: <select id="town" class="form-control" name="town">
+               <option value="empty">Selectionner un sport ou laisser vide pour tout avoir</option>
+               % for option in list_town:
+                    <option value="{{option[0]}}">{{option[0]}}</option>
+               %end
+               </select></span>
 
-      </select>
-      <input value="Rechercher" type="submit" />
+            </form>
+            
+            <!--<ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
+            </ul>-->
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+<!-- Fin NavBar -->
+
 
 %if len(datas) > 0:
     <table class="table" id="info_equipement_ville" >
