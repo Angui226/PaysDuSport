@@ -60,6 +60,41 @@ def do_home():
     list_town = get_list_town()
     return template('home_requested', datas = result, list_activities = list_activities, list_town = list_town)
 
+@post('/request') # or @route('/', method='POST')
+def do_home():
+    r = urllib.parse.unquote(request.body.read().decode())
+    print(r)
+    pattern = "town="
+    town_i = r.index(pattern)
+    town = r[town_i + len(pattern):].replace("+", " ")
+    pattern2 = "&"
+    pattern3 = "sport="
+    sport_i = r.index(pattern2)
+    sport = r[len(pattern3) : sport_i].replace("+", " ")
+
+    #SQL injection handler
+#    if not re.search("^[a-z0-9]+$", town):
+#        raise InjectionSQL
+#    if not re.search("^[a-z0-9]+$", sport):
+#        raise InjectionSQL
+
+    if (town != 'empty' and sport !='empty'):
+        result = select_install_town(town, sport)
+
+    elif (town != 'empty' and sport =='empty'):
+        result = select_install_town_empty_sport(town)
+
+    elif (town == 'empty' and sport !='empty'):
+        result = select_install_town_empty_town(sport)
+    else:
+        result = select_install_town_empty_all()
+
+
+    list_activities = get_list_activites()
+    list_town = get_list_town()
+    return template('home_requested', datas = result, list_activities = list_activities, list_town = list_town)
+
+
 
 @post('/change') # or @route('/', method='POST')
 def do_changeTown():

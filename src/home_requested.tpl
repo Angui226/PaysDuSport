@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  
+
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="../static/specific_installation.css" rel="stylesheet" type="text/css">
     <script src="/static/jquery.js"></script>
@@ -36,7 +36,7 @@ border : 1px;
           </div>
 
           <div id="navbar" class="navbar-collapse collapse">
-          <form  action="/" method="post">
+          <form  action="/request" method="post">
 
               <!-- <li class="active"><a href="#">Accueil</a></li> -->
 
@@ -49,7 +49,7 @@ border : 1px;
                     <option value="{{option[0]}}">{{option[0]}}</option>
                %end
                </select></td></tr></table></span>
-              
+
               <span class="col-md-3 navbar-right right_nav">
                <table><tr><td>Ville:</td><td><select id="town" class="form-control" name="town">
                <option value="empty">Selectionner un sport ou laisser vide pour tout avoir</option>
@@ -59,7 +59,7 @@ border : 1px;
                </select></td></tr></table></span>
 
             </form>
-            
+
             <!--<ul class="nav navbar-nav navbar-right">
               <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
             </ul>-->
