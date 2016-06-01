@@ -36,7 +36,7 @@ border : 1px;
           </div>
 
           <div id="navbar" class="navbar-collapse collapse">
-          <form  action="/request" method="post">
+          <form  action="/" method="post">
 
               <!-- <li class="active"><a href="#">Accueil</a></li> -->
 
