@@ -18,6 +18,11 @@ border : 1px;
 .right_nav{
      margin-top : 8px !important;
 }
+
+#info_equipement_ville:hover{
+     cursor: pointer;
+}
+
 </style>
 </head>
 <body>
@@ -82,10 +87,10 @@ border : 1px;
 
         <tbody>
         % for item in datas:
-             <tr>
+             <tr onclick="document.location.href='./detail/{{item[0]}}'">
                 <td>{{item[1]}}</td>
                 <td>{{item[2]}}</td>
-                <td><a href = "./detail/{{item[0]}}">{{item[3]}}</a></td>
+                <td>{{item[3]}}</td>
                 <td>{{item[4]}}</td>
             </tr>
         %end
