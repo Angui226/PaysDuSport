@@ -1,3 +1,7 @@
+"""
+Class ActivityEquipement
+"""
+
 class ActivityEquipement:
     def __init__(self,obj):
         """

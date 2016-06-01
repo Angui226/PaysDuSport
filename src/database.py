@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sqlite3
-
+"""
+All functions related to the database
+"""
 def creation_table_database():
     """
     Create the database if it doesn't exists, connect to it if it does.
@@ -103,7 +105,7 @@ def select_install_town_empty_sport(town):
 
 def select_install_town_empty_all():
     """
-    select all equipement of a given town
+    return all the activities
     """
     conn = sqlite3.connect('../db/database.db') #connect to database
     c = conn.cursor()
@@ -136,7 +138,7 @@ def get_list_activites():
 
 def get_list_activites_changed(town):
     """
-    select all activities
+    select all activities of a given town
     """
     conn = sqlite3.connect('../db/database.db') #connect to database
     c = conn.cursor()

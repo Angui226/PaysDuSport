@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-
+"""
+Class Installation
+"""
 class Installation:
     def __init__(self,obj):
         self.nom = obj['geo']['name']
@@ -14,6 +16,9 @@ class Installation:
         self.tram=obj['InsTransportTram']
 
     def addDbInstallation(self,c):
+        """
+        add on object (self) to a database (c)
+        """
         if(self.rue is None): #permet de catcher le cas ou il n y a pas de rue entree
             self.rue = ""
 

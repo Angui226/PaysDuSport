@@ -4,7 +4,9 @@ from installation_class import *
 from activity_equipement_class import *
 from equipement_class import *
 from database import *
-
+"""
+Load json and create object for the db
+"""
 def getJsonAndCreate():
     """
     loads three json files. Convert all json object to pyhon object and add it to the database
