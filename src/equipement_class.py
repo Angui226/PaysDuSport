@@ -15,6 +15,7 @@ class Equipement:
         self.ins_numero_install = obj['InsNumeroInstall']
         self.equipement_id = obj['EquipementId']
 
+
     def add_db_equipement(self,c):
         """
         Insert the object given in parametre (self) to the database given (c)

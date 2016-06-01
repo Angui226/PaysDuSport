@@ -4,6 +4,7 @@ from installation_class import *
 from activity_equipement_class import *
 from equipement_class import *
 from database import *
+
 """
 Load json and create object for the db
 """
@@ -11,13 +12,9 @@ def get_json_and_create():
     """
     loads three json files. Convert all json object to pyhon object and add it to the database
     """
-
     file_installations = open("../json_files/installations.json", "r").read()
-
     file_equipements = open("../json_files/equipements.json", "r").read()
-
     file_activites = open("../json_files/activites.json", "r").read()
-
 
     #prend en charge d un fichier json
     file_installations = json.loads(file_installations)

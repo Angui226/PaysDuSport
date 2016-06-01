@@ -15,6 +15,7 @@ class Installation:
         self.bus=obj['InsTransportBus']
         self.tram=obj['InsTransportTram']
 
+
     def add_db_installation(self,c):
         """
         add on object (self) to a database (c)

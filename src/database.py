@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sqlite3
+
 """
 All functions related to the database
 """
@@ -55,7 +56,6 @@ def creation_table_database():
     conn.close()
 
 
-
 def select_install_town( town, sport ):
     """
     select all equipement with given sport of a given town
@@ -65,12 +65,12 @@ def select_install_town( town, sport ):
 
     selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE i.Commune = '"+town+"' AND a.LibelleActivite = '"+sport+"' AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
 
-
     c.execute( selectQuery )
     result = c.fetchall();
 
     conn.close()
     return result
+
 
 def select_install_town_empty_town(sport):
     """
@@ -81,12 +81,12 @@ def select_install_town_empty_town(sport):
 
     selectQuery = "SELECT DISTINCT i.NumeroInstall, i.Rue, i.Commune, i.Nom, a.LibelleActivite FROM INSTALLATION i, EQUIPEMENT e, ACTIVITE a  WHERE a.LibelleActivite = '"+sport+"' AND e.NumeroEquipement = a.NumeroEquipement AND e.NumeroInstallation = i.NumeroInstall "
 
-
     c.execute( selectQuery )
     result = c.fetchall();
 
     conn.close()
     return result
+
 
 def select_install_town_empty_sport(town):
     """
@@ -102,6 +102,7 @@ def select_install_town_empty_sport(town):
 
     conn.close()
     return result
+
 
 def select_install_town_empty_all():
     """
@@ -119,7 +120,6 @@ def select_install_town_empty_all():
     return result
 
 
-
 def get_list_activites():
     """
     select all activities
@@ -129,12 +129,12 @@ def get_list_activites():
 
     selectQuery = "SELECT DISTINCT a.LibelleActivite FROM ACTIVITE a ORDER BY a.LibelleActivite asc "
 
-
     c.execute( selectQuery )
     result = c.fetchall();
 
     conn.close()
     return result
+
 
 def get_list_activites_changed(town):
     """
@@ -144,7 +144,6 @@ def get_list_activites_changed(town):
     c = conn.cursor()
 
     selectQuery = "SELECT DISTINCT a.LibelleActivite FROM ACTIVITE a WHERE a.Commune ='"+town+"' ORDER BY a.LibelleActivite asc "
-
 
     c.execute( selectQuery )
     result = c.fetchall();
@@ -162,13 +161,11 @@ def get_list_town():
 
     selectQuery = "SELECT DISTINCT a.Commune FROM ACTIVITE a ORDER BY a.Commune asc "
 
-
     c.execute( selectQuery )
     result = c.fetchall();
 
     conn.close()
     return result
-
 
 
 #get specific installation
@@ -180,7 +177,6 @@ def get_specific_installation(id_activity):
     c = conn.cursor()
 
     selectQuery = "SELECT * FROM INSTALLATION i WHERE NumeroInstall ="+id_activity
-
 
     c.execute( selectQuery )
     result = c.fetchall();
