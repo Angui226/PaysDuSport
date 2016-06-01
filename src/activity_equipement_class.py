@@ -15,7 +15,7 @@ class ActivityEquipement:
         self.libelle_niveau = obj['ActNivLib']
         self.ville = obj['ComLib']
 
-    def addDbActivityEquipement(self,c):
+    def add_db_activity_equipement(self,c):
         """
         Insert the object given in parametre (self) to the database given (c)
         """

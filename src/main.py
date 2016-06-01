@@ -10,8 +10,8 @@ import json #permet de traiter du json
 from get_json_files import *
 from database import *
 
-#creation_table_database()
-#getJsonAndCreate()
+creation_table_database()
+get_json_and_create()
 
 from bottle import get, post, request, run, template, route, static_file,response
 
@@ -73,7 +73,7 @@ def do_home():
 
 
 @post('/change') # or @route('/', method='POST')
-def do_changeTown():
+def do_change_town():
     """
     refresh the list of the sport according to the selected town
     """

@@ -7,7 +7,7 @@ from database import *
 """
 Load json and create object for the db
 """
-def getJsonAndCreate():
+def get_json_and_create():
     """
     loads three json files. Convert all json object to pyhon object and add it to the database
     """
@@ -31,13 +31,13 @@ def getJsonAndCreate():
     #ajout dans la bd
     for installation in file_installations['data']:
         obj_temp = Installation(installation)
-        obj_temp.addDbInstallation(c)
+        obj_temp.add_db_installation(c)
     for equipement in file_equipements['data']:
         obj_temp = Equipement(equipement)
-        obj_temp.addDbEquipement(c)
+        obj_temp.add_db_equipement(c)
     for activite in file_activites['data']:
         obj_temp = ActivityEquipement(activite)
-        obj_temp.addDbActivityEquipement(c)
+        obj_temp.add_db_activity_equipement(c)
 
     #maj/fermeture de la connexion avec la bd
     conn.commit()
