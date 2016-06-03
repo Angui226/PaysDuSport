@@ -81,7 +81,7 @@ border : 1px;
                 <th>Adresse</th>
                 <th>Ville</th>
                 <th>Nom complexe</th>
-                <th>Equipement</th>
+                <th>Activité</th>
             </tr>
         </thead>
 
@@ -101,7 +101,7 @@ border : 1px;
                 <th>Adresse</th>
                 <th>Ville</th>
                 <th>Nom complexe</th>
-                <th>Equipement</th>
+                <th>Activité</th>
             </tr>
         </tfoot>
 %else:
